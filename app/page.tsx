@@ -24,9 +24,9 @@ type user = {
 
 type message = {
   id: number;
-  userId: string;
+  userId: number;
   content: string;
-  additionalContent: number;
+  additionalContentId: number;
 };
 
 type additionalContent = {
@@ -52,15 +52,36 @@ type reaction = {
 };
 
 export default function Home() {
-  const [messages, setMessages] = useState<string[]>(["1.a", "2.a"]);
+  const [messages, setMessages] = useState<message[]>([
+    {
+      id: 1,
+      userId: 1,
+      content: "test 1",
+      additionalContentId: 0,
+    },
+    {
+      id: 2,
+      userId: 2,
+      content: "test 2",
+      additionalContentId: 0,
+    },
+    {
+      id: 1,
+      userId: 1,
+      content: "test 3",
+      additionalContentId: 0,
+    },
+    {
+      id: 1,
+      userId: 1,
+      content: "test 4",
+      additionalContentId: 0,
+    },
+  ]);
 
-  const addMessage = (message: string) => {
+  const addMessage = (message: message) => {
     setMessages([...messages, message]);
   };
-
-  useEffect(() => {
-    console.log(messages);
-  }, [messages]);
 
   return (
     <main className="">

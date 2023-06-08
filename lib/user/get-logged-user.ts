@@ -7,4 +7,8 @@ export function getLoggedUser(): User {
     createdAt: new Date(),
     email: "djhasdkljha",
   };
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> 04c57ef (fixed)

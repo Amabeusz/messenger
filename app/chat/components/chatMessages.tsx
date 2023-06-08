@@ -1,5 +1,9 @@
 import { getMessages } from "@/lib/messages/get-messages";
+<<<<<<< HEAD
 import Message from "./messages/message";
+=======
+import Message from "./message/message";
+>>>>>>> 04c57ef (fixed)
 
 export default function ChatMessages() {
   return (
@@ -9,4 +13,8 @@ export default function ChatMessages() {
       )}
     </div>
   );
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> 04c57ef (fixed)

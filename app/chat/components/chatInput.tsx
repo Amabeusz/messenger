@@ -1,15 +1,8 @@
-import { useState } from "react";
+"use client";
 
-export default function ChatInput({ addMessage }: { addMessage: Function }) {
-  const [message, setMessage] = useState("");
-
+export default function ChatInput() {
   const onSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    addMessage(message);
-  };
-
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setMessage(e.target.value);
   };
 
   return (
@@ -18,7 +11,6 @@ export default function ChatInput({ addMessage }: { addMessage: Function }) {
         className="appearance-none rounded w-full text-gray-700"
         type="text"
         placeholder="Text"
-        onChange={handleChange}
       />
     </form>
   );

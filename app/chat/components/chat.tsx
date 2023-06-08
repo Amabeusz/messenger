@@ -1,5 +1,6 @@
 import ChatHeader from "./chatHeader";
 import { PrismaClient, User } from "@prisma/client";
+import ChatInput from "./chatInput";
 
 async function get() {
   const prisma = new PrismaClient();
@@ -25,6 +26,7 @@ export default function Chat() {
             ))
           )}
         </div>
+        <ChatInput />
       </div>
     </div>
   );

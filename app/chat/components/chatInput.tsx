@@ -6,12 +6,14 @@ export default function ChatInput() {
   };
 
   return (
-    <form onSubmit={onSubmit}>
-      <input
-        className="appearance-none rounded w-full text-gray-700"
-        type="text"
-        placeholder="Text"
-      />
-    </form>
+    <div className="flex-none">
+      <form onSubmit={onSubmit}>
+        <input
+          className="appearance-none rounded w-full text-gray-700"
+          type="text"
+          placeholder="Text"
+        />
+      </form>
+    </div>
   );
 }

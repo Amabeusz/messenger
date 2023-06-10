@@ -1,7 +1,7 @@
 import { getLoggedUser } from "@/lib/user/get-logged-user";
 import { Message } from "@prisma/client";
 
-export default function Message({ message }: { message: Message }) {
+export default function MessageComponent({ message }: { message: Message }) {
   const isLoggedUser = getLoggedUser().id === message.userId;
 
   return (

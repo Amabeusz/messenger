@@ -4,8 +4,4 @@ const prisma = new PrismaClient();
 
 export async function getUsers() {
   return await prisma.user.findMany();
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> 04c57ef (fixed)

@@ -1,4 +1,4 @@
-import Chat from "../../.next/chat";
+import Chat from "./components/chat";
 import FriendsList from "./components/friendsList";
 
 export default function ChatPage() {

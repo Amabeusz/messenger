@@ -1,20 +1,13 @@
 import { getMessages } from "@/lib/messages/get-messages";
-<<<<<<< HEAD
-import Message from "./messages/message";
-=======
-import Message from "./message/message";
->>>>>>> 04c57ef (fixed)
+import MessageComponent from "./messages/message";
+import type { Message } from "@prisma/client";
 
 export default function ChatMessages() {
   return (
     <div className="overflow-auto p-3 flex-grow">
       {getMessages().then((res) =>
-        res.map((message) => <Message message={message} />)
+        res.map((message : Message) => <MessageComponent message={message} key={message.id}/>)
       )}
     </div>
   );
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> 04c57ef (fixed)

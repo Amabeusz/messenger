@@ -1,0 +1,62 @@
+datasource db {
+  provider          = "postgresql"
+  url               = env("POSTGRES_PRISMA_URL")
+  directUrl         = env("POSTGRES_URL_NON_POOLING")
+  shadowDatabaseUrl = env("POSTGRES_URL_NON_POOLING")
+}
+
+generator client {
+  provider = "prisma-client-js"
+  output = "../node_modules/.prisma/client"
+}
+
+model AdditionalConentType {
+  id                Int                 @id @default(autoincrement())
+  name              String              @db.VarChar(255)
+  AdditionalContent AdditionalContent[]
+}
+
+model AdditionalContent {
+  id                   Int                  @id @default(autoincrement())
+  typeId               Int
+  content              String               @db.VarChar(255)
+  AdditionalConentType AdditionalConentType @relation(fields: [typeId], references: [id])
+  Message              Message[]
+}
+
+model Chat {
+  id       Int        @id @default(autoincrement())
+  name     String     @db.VarChar(50)
+  ChatUser ChatUser[]
+  Message  Message[]
+}
+
+model ChatUser {
+  id           Int    @id @default(autoincrement())
+  chatId       Int
+  userId       Int
+  userNickname String @db.VarChar(50)
+  Chat         Chat   @relation(fields: [chatId], references: [id])
+  User         User   @relation(fields: [userId], references: [id])
+}
+
+model Message {
+  id                  Int                @id @default(autoincrement())
+  createdAt           DateTime           @default(now())
+  content             String             @db.VarChar(255)
+  userId              Int
+  chatId              Int
+  additionalContentId Int?
+  AdditionalContent   AdditionalContent? @relation(fields: [additionalContentId], references: [id])
+  Chat                Chat               @relation(fields: [chatId], references: [id])
+  User                User               @relation(fields: [userId], references: [id])
+}
+
+model User {
+  id        Int        @id @default(autoincrement())
+  createdAt DateTime   @default(now())
+  email     String     @unique
+  name      String
+  ChatUser  ChatUser[]
+  Message   Message[]
+}
